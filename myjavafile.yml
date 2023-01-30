@@ -2,22 +2,16 @@
 - hosts: all
   become: yes
   tasks:
-
-    - name: i want to install java jdk8 on ubuntu server
+    - name: I want to install java jdk8 on ubuntu server
       apt:
         name: openjdk-8-jdk
         state: present
-  
-  when: ansible_os_family=="Debian"
 
----
-- hosts: all
-  become: yes
-  tasks:
+        when: ansible_os_family=="Debian"
 
-    - name: i want to install jva jdk8 on RedHat sever
-      apt:
-        name: java-1.8.0-openjdk
-        state: present
-
- when: ansible_os_family=="RedHat"
+    - name: I want to install java jdk8 on RedHat server
+      yum:
+           name: openjdk-8-jdk
+           state: present
+    
+           when: ansible_os_family=="RedHat" 
